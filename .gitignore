@@ -1,0 +1,56 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+venv_Machine_Learning/
+env/
+ENV/
+
+# Data files
+data/
+*.csv
+*.parquet
+
+# Model files
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.cache
+
+# DVC (if used later)
+.dvc/
+*.dvc
+
+# Temporary files
+tmp/
+temp/
