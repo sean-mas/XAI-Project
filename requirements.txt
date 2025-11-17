@@ -11,3 +11,14 @@ shap
 captum
 bertviz
 pyarrow
+scipy
+
+# API deployment dependencies
+fastapi
+uvicorn[standard]
+pydantic
+prometheus-client
+gunicorn
+
+# Data versioning
+dvc

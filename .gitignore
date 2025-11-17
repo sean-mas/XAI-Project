@@ -47,9 +47,11 @@ logs/
 .cache/
 *.cache
 
-# DVC (if used later)
-.dvc/
-*.dvc
+# DVC tracking files
+/data/*.dvc
+/models/*.dvc
+.dvc/cache
+.dvc/tmp
 
 # Temporary files
 tmp/
