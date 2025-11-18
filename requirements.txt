@@ -12,6 +12,7 @@ captum
 bertviz
 pyarrow
 scipy
+protobuf
 
 # API deployment dependencies
 fastapi
