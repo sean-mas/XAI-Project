@@ -2,7 +2,13 @@
 
 **Note:** While this README is in English, the Jupyter Notebooks and detailed analysis within this repository are written in **German**.
 
-This project implements a sentiment analysis pipeline using the fine-tuned `vinai/bertweet-base` model on the Sentiment140 dataset, following the CRISP-DM methodology. The core objective is to systematically compare two XAI (Explainable AI) frameworks—SHAP and Captum—across four dimensions: token agreement, faithfulness (deletion AUC), robustness under perturbations, and computational efficiency. Results demonstrate that SHAP provides superior faithfulness (73% above threshold) and robustness (ρ ≈ 0.75), while Captum offers 2.3× faster inference, suggesting a hybrid deployment strategy for production use cases.
+This project implements a sentiment analysis pipeline using the fine-tuned `vinai/bertweet-base` model on the Sentiment140 dataset, following the CRISP-DM methodology. The core objective is to systematically compare two XAI (Explainable AI) frameworks—SHAP and Captum—across four dimensions: token agreement, faithfulness (deletion AUC), robustness under perturbations, and computational efficiency.
+
+**Key Findings:**
+The evaluation reveals that **SHAP** significantly outperforms Captum in terms of explanation quality (faithfulness and robustness), while **Captum** offers a moderate speed advantage. Specifically:
+- **Faithfulness:** SHAP explanations are highly faithful (Mean Deletion-AUC Ratio ~6.9x), whereas Captum performs close to random baseline.
+- **Robustness:** SHAP is moderately robust to text perturbations (ρ ≈ 0.60), while Captum rankings are unstable (ρ ≈ 0.04).
+- **Efficiency:** Captum is approximately 1.4x faster than SHAP, which is less than the hypothesized 2x speedup.
 
 ## Setup
 
@@ -23,8 +29,8 @@ This project implements a sentiment analysis pipeline using the fine-tuned `vina
    - Download [Sentiment140 dataset](http://help.sentiment140.com/for-students) and place CSV files in `data/` directory
 
 4. **Run notebooks in order:**
-   - Navigate to `notebooks/` and execute `1_Business_Understanding.ipynb` through `6_Deployment.ipynb` sequentially
-   - The pipeline trains the model, generates predictions, and produces XAI evaluation metrics
+   - Navigate to `notebooks/` and execute `1_Business_Understanding.ipynb` through `6_Deployment.ipynb` sequentially.
+   - The pipeline trains the model, generates predictions, and produces XAI evaluation metrics.
 
 ## Project Structure
 
@@ -50,8 +56,14 @@ This project implements a sentiment analysis pipeline using the fine-tuned `vina
 - SHAP, Captum, Pandas, Matplotlib, Seaborn
 - See `requirements.txt` for full dependencies
 
-## Key Results
+## Key Results & Deployment
 
-- **Model Performance:** Fine-tuned BERTweet achieves strong sentiment classification
-- **XAI Comparison:** SHAP excels in faithfulness/robustness; Captum wins on speed
-- **Deployment Insight:** Hybrid approach recommended (Captum for real-time, SHAP for audits)
+- **Model Performance:** Fine-tuned BERTweet achieves strong sentiment classification.
+- **XAI Comparison:**
+    - **Agreement:** Low overlap (~50%) between SHAP and Captum.
+    - **Faithfulness:** SHAP excels (64% of samples > 1.5x AUC ratio).
+    - **Robustness:** SHAP is significantly more robust than Captum.
+    - **Efficiency:** Captum provides a 1.37x speedup over SHAP.
+- **Deployment Strategy:** A **hybrid microservices architecture** is recommended:
+    - **Synchronous Path:** Uses Captum for real-time, low-latency feedback in user interfaces.
+    - **Asynchronous Path:** Uses SHAP for high-precision, audit-grade explanations in background workers.
