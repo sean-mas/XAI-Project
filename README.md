@@ -1,5 +1,7 @@
 # XAI-Project: Sentiment Analysis with Explainability
 
+**Note:** While this README is in English, the Jupyter Notebooks and detailed analysis within this repository are written in **German**.
+
 This project implements a sentiment analysis pipeline using the fine-tuned `vinai/bertweet-base` model on the Sentiment140 dataset, following the CRISP-DM methodology. The core objective is to systematically compare two XAI (Explainable AI) frameworks—SHAP and Captum—across four dimensions: token agreement, faithfulness (deletion AUC), robustness under perturbations, and computational efficiency. Results demonstrate that SHAP provides superior faithfulness (73% above threshold) and robustness (ρ ≈ 0.75), while Captum offers 2.3× faster inference, suggesting a hybrid deployment strategy for production use cases.
 
 ## Setup
@@ -28,14 +30,14 @@ This project implements a sentiment analysis pipeline using the fine-tuned `vina
 
 ```
 ├── notebooks/
-│   ├── 1_Business_Understanding.ipynb
-│   ├── 2_Data_Understanding.ipynb
-│   ├── 3_Data_Preparation.ipynb
-│   ├── 4_Modeling.ipynb
-│   ├── 5_Evaluation.ipynb
-│   └── 6_Deployment.ipynb
-├── data/                     # Dataset files (not tracked)
-├── models/                   # Trained models (not tracked)
+│   ├── 1_Business_Understanding.ipynb  # (German) Project goals & XAI definition
+│   ├── 2_Data_Understanding.ipynb      # (German) EDA of Sentiment140
+│   ├── 3_Data_Preparation.ipynb        # (German) Cleaning & Tokenization
+│   ├── 4_Modeling.ipynb                # (German) Fine-tuning BERTweet
+│   ├── 5_Evaluation.ipynb              # (German) SHAP vs. Captum analysis
+│   └── 6_Deployment.ipynb              # (German) Production architecture
+├── data/                               # Dataset files (not tracked)
+├── models/                             # Trained models (not tracked)
 ├── requirements.txt
 └── README.md
 ```
